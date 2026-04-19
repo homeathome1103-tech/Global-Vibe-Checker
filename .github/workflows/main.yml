@@ -1,0 +1,31 @@
+name: Update Global Vibe
+on:
+  schedule:
+    - cron: '0 */6 * * *' # This tells the robot to wake up every 6 hours
+  workflow_dispatch:      # This adds a button so you can run it manually anytime
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run vibe script
+        run: python vibe_check.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "VibeBot"
+          git config --global user.email "bot@github.com"
+          git add index.html
+          git commit -m "Automated Vibe Update: $(date)" || echo "No changes to commit"
+          git push
