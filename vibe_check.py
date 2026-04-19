@@ -162,7 +162,7 @@ html_content = f"""
             </div>
         </div>
 
-        <a href="https://ko-fi.com/" target="_blank" class="donate-btn">☕ Support the Robot</a>
+        <a href="https://ko-fi.com/vibecheck111" target="_blank" class="donate-btn">☕ Support the Robot</a>
         
         <div class="footer">
             Autonomous Update: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")} UTC
